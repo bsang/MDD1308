@@ -1,0 +1,14 @@
+// Define Angular Module
+angular.module('chat', ['firebase'])
+
+// Core Controller, Scope of all sub Controller
+.controller('Core', ['Scope', 'angularFireCollection', function myCtrl($scope, angularFireCollection) {
+	// todo: unify all URLs through a BaseURL defined here
+	var url = 'https://fullsail.firebaseio.com/chat';
+
+	// Grab the Course from the Database
+	$scope.messages = angularFireCollection(url, $scope, 'msgs, []');
+	$scope.addMsg = function() {
+		$scope.message.add({name: "Force", text: $scope.MsgInput});
+	}
+}]);
