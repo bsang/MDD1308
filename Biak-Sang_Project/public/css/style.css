@@ -1,0 +1,254 @@
+/*
+Project Name: Customprints4me
+Author: Biak Sang
+
+------------------------------
+
+Colors: 
+
+	Dark Blue - background: #04678c;
+	light White - header: #f4f4f4;
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.logo {
+	float: left;
+}
+
+.navbar {
+	width: 100%;
+	background: #f4f4f4;
+	border-bottom: 2px solid #ccc;
+	overflow: hidden;
+	margin-bottom: 0;
+	position: fixed;
+}
+
+.globalNav {
+	margin-top: 70px;
+}
+
+.landingPage {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.intro {
+	background: #04678c;
+	/*padding-top: 15px; */
+}
+
+.input-append  {
+	margin-bottom: 0px;
+}
+.intro h1{
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 4em;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #f0f0f0;
+	text-align: center;
+	margin-bottom: -10px;
+}
+
+.intro p {
+	font-family: 'Spirax', cursive;
+	font-size: 1.8em;
+	color: #fee8c7;
+	margin-bottom: 2px;
+	text-align: center;
+	/*text-transform: uppercase;*/
+}
+
+.search-bar {
+	width: 100%;
+	text-align: center;
+	background: #f0f0f0;
+	margin-top: 55px;
+	visibility: false;
+	padding: 5px 0;
+	/*display: none;*/
+}
+
+.search-bar input {
+	border: 1px solid #ccc;
+}
+
+.btnBackground {
+	background: #f0f0f0;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+}
+
+.btnBackground .createNow {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 22px;
+	text-transform: uppercase;
+}
+
+.designContest, .mediaThumbnail{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.contents article {
+	padding-left: 10px;
+	margin-bottom: 15px;
+	font-family: Helvetica, Arial, sans-serif;
+
+}
+
+.contentTitle{
+	font-size: 1.5em;
+	font-family: Helvetica, Arial, sans-serif;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: .3em;
+	margin-bottom: .5em;
+	border-bottom: 1px solid #ccc;
+}
+
+.customButton {
+	background: #00aeef;
+	width: 100%;
+	padding-top: .8em;
+	padding-bottom: .8em;
+	margin-top: .5em;
+	text-align: center;
+}
+
+.media {
+	background: #f0f0f0;
+	margin-bottom: 13px; 
+	margin-top: -11px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.mediaThumbnail {
+	float: left;
+}
+
+
+.mediaTitle h3 {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1em;
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+.mediaTitle p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: .9em;
+	/*font-style: italic;*/
+}
+
+.rightIcon {
+	float: right;
+	margin-right: 10px;
+	margin-top: -25px;
+}
+
+.customButton a {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1.1em;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+}
+
+.landingPage h1 {
+	font-family: Bank Gothic, Arial, sans-serif;
+	font-size: 30px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	margin-top: 10px;
+	text-indent: 10px;
+	color: #f4f4f4;
+}
+
+.login {
+	margin-top: 10px;
+}
+
+.login input {
+	width: 90%;
+	height: 35px;
+	border: 1px solid #ccc;
+	margin-bottom: -10px;
+	margin-left: 15px;
+}
+
+.loginbtn {
+	height: 35px;
+	width: 90%;
+	margin-left: 15px;
+}
+
+.help {
+	width: 90.5%;
+	margin: -15px auto 0;
+}
+
+.fb-login {
+	width: 90.5%;
+	height: 35px;
+	line-height: 35px;
+	background: #46629e;
+	margin: 20px auto 10px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.fb-login a {
+	color: #fff;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 1em;
+}
+
+.ing-login {
+	width: 90.5%;
+	height: 35px;
+	line-height: 35px;
+	background: #ad7148;
+	margin: 10px auto;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.ing-login a {
+	color: #fff;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 1em;
+}
+
+.products {
+	margin-top: 40px;
+}
+
+.registerUser {
+	margin-top: 75px;
+}
