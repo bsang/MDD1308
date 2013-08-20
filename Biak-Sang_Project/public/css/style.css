@@ -2,13 +2,7 @@
 Project Name: Customprints4me
 Author: Biak Sang
 
-------------------------------
-
-Colors: 
-
-	Dark Blue - background: #04678c;
-	light White - header: #f4f4f4;
-*/
+-----------------------------*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -33,6 +27,11 @@ time, mark, audio, video {
 
 .logo {
 	float: left;
+	margin-left: 5px;
+}
+
+.nav {
+	display: none;
 }
 
 .navbar {
@@ -45,7 +44,27 @@ time, mark, audio, video {
 }
 
 .globalNav {
-	margin-top: 70px;
+	margin-top: 55px;
+}
+
+.globalNav .nav li {
+	width: 100%;
+	height: 4em;
+	line-height: 4em;
+	background: $f0f0f0;
+	border-bottom: 1px solid #ccc;
+}
+
+.globalNav .nav li a {
+	display: block;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 1em;
+	text-indent: 10px;
+}
+
+.globalNav .nav li i {
+	margin-left: 10px;
+	margin-top: 25px;
 }
 
 .landingPage {
@@ -56,7 +75,6 @@ time, mark, audio, video {
 
 .intro {
 	background: #04678c;
-	/*padding-top: 15px; */
 }
 
 .input-append  {
@@ -196,14 +214,14 @@ time, mark, audio, video {
 
 .login input {
 	width: 90%;
-	height: 35px;
+	height: 40px;
 	border: 1px solid #ccc;
 	margin-bottom: -10px;
 	margin-left: 15px;
 }
 
 .loginbtn {
-	height: 35px;
+	height: 40px;
 	width: 90%;
 	margin-left: 15px;
 }
@@ -245,10 +263,99 @@ time, mark, audio, video {
 	font-size: 1em;
 }
 
-.products {
-	margin-top: 40px;
+.registerUser {
+	margin-top: 20px;
 }
 
-.registerUser {
-	margin-top: 75px;
+.canvas {
+	min-height: 100%;
+}
+
+.colorChoice {
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+
+.tShirtCanvas {
+	width: 90%;
+	height: 100%;
+	padding: 13px 0;
+	text-align: center;
+}
+
+.CustomButtons {
+	width: 100%;
+	position: fixed;
+  	background: #333;
+  	bottom: 0;
+  	height: 50px;
+  	clear:both;
+}
+
+.CustomButtons ul li {
+	width: 3.1em;
+	height: 50px;
+	border-right: 1px solid #333;
+	background: #222;
+	padding-left: 7px;
+	padding-right: 7px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.center {
+	margin-top: 6px;
+	margin-left: 7px;
+}
+
+.colorChoice {
+	margin-top: 50px;
+}
+
+.colorChoice ul li {
+	list-style-type: none;
+}
+.colorChoice ul li a {
+	line-height: 30px;
+	text-align: center;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	color: #ccc;
+	text-decoration: none;
+}
+
+.blueShirt {
+	width: 30px;
+	height: 30px;
+	display: block;
+	background: #04678c;
+	color: #fff;
+}
+
+.whiteShirt {
+	width: 28px;
+	height: 28px;
+	display: block;
+	border: 1px solid #ccc;
+	background: #fff;
+	color: #999;
+}
+
+.redShirt {
+	width: 30px;
+	height: 30px;
+	display: block;
+	border: 1px solid #ccc;
+	color: #fff;
+	background: #801212
+}
+
+.greenShirt {
+	width: 30px;
+	height: 30px;
+	display: block;
+	border: 1px solid #ccc;
+	color: #fff;
+	background: #007c10;
 }

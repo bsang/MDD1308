@@ -1,5 +1,5 @@
 <div class="span12 loginForm">
-				<form class="form-horizontal">
+				<form class="form-horizontal" ng-controller="Login">
 					<div class="control-group login">
 					    <div class="controls">
 					    	<input type="text" id="inputEmail" placeholder="Email">
@@ -26,7 +26,7 @@
 				</div>
 
 				<div class="fb-login">
-					<a href="#">Login with facebook</a>
+					<a href="#" ng-click="login()">Login with facebook</a>
 				</div>
 
 				<div class="ing-login">
