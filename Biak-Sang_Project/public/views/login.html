@@ -1,35 +1,32 @@
 <div class="span12 loginForm">
 				<form class="form-horizontal" ng-controller="Login">
 					<div class="control-group login">
-					    <div class="controls">
-					    	<input type="text" id="inputEmail" placeholder="Email">
-					    </div>
+					    <input type="text" id="inputEmail" placeholder="Email" ng-model="user.email">
 					</div>
 
 				  	<div class="control-group login">
-					    <div class="controls">
-					    	<input type="password" id="inputPassword" placeholder="Password">
-					    </div>
+					    <input type="password" id="inputPassword" placeholder="Password" ng-model="user.password">
 				  	</div>
 
 				  	<div class="control-group login">
-					    <div class="controls">
-					    	<button type="submit" class="btn loginbtn">Sign in</button>
-					    </div>
-				 	 </div>
+					    <button type="submit" class="btn loginbtn" ng-click="login()">Sign in</button>
+					</div>
+					<div class="help">
+						<a href="#/registration" class="pull-left">Create an account</a>
+						<a href="#" class="pull-right">Forgot Password?</a>
+						<div class="clearFix"></div>
+					</div>
+
+					<div class="fbUserInfo">
+						<img src="#" pull-left>
+						<p></p>
+					</div>
+					<div class="control-group login">
+					    <button type="submit" class="btn loginbtn fb-login" ng-click="fbLogin()">Login with facebook</button>
+					</div>
+
+					<!-- <div class="control-group login">
+					    <button type="submit" class="btn loginbtn ing-login" ng-click="fbLogin()">Login with Instagram</button>
+					</div> -->
 				</form>
-
-				<div class="help">
-					<a href="#/registration" class="pull-left">Create an account</a>
-					<a href="#" class="pull-right">Forgot Password?</a>
-					<div class="clearFix"></div>
-				</div>
-
-				<div class="fb-login">
-					<a href="#" ng-click="login()">Login with facebook</a>
-				</div>
-
-				<div class="ing-login">
-					<a href="#">Login with Instagram</a>
-				</div>
 			</div>

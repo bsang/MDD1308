@@ -8,18 +8,21 @@
 		</ul>
 	</div>
 	<div class="tShirtCanvas pull-right">
-		<div>
+		<div class="customShirt">
+			<div id="tshirtPicture">
+				<img id="base64image" ng-src="{{shirt.image}}" />
+			</div>
 			<img class="tShirtCanvasColor" src="img/blue-shirt.png">
 		</div>
 	</div>
-
 	<div class="CustomButtons">
 		<ul>
-			<li class="pull-left"><a href="#"><img class="center" src="img/facebook.png" width="34" height="34"></a></li>
+			<input type="file" ng-model="shirt.picture" onchange="angular.element(this).scope().update_image(this)">
+			<!-- <li class="pull-left"><a href="#" id="fbPhoto"><img class="center" src="img/facebook.png" width="34" height="34"></a></li>
 			<li class="pull-left"><a href="#"><img class="center" src="img/instagram.png " width="34" height="34"></a></li>
 			<li class="pull-left"><a href="#" ng-model='myPicture'><img src="img/camera.png"></a></li>
 			<li class="pull-left"><a href="#"><img class="center" src="img/addCart.png" width="34" height="34"></a></li>
-			<li class="pull-left"><a href="#"><img class="center" src="img/share.png" width="34" height="34"></a></li>
+			<li class="pull-left"><a href="#"><img class="center" src="img/share.png" width="34" height="34"></a></li> -->
 		</ul>
 	</div>
 </div>

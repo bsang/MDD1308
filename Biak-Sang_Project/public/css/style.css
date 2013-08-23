@@ -227,18 +227,24 @@ time, mark, audio, video {
 }
 
 .help {
-	width: 90.5%;
-	margin: -15px auto 0;
+	width: 84.5%;
+	height: 6%;
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-top: 1%;
+	margin: -15px 0 0 15px;
 }
 
 .fb-login {
-	width: 90.5%;
-	height: 35px;
-	line-height: 35px;
+	height: 40px;
+	line-height: 30px;
 	background: #46629e;
-	margin: 20px auto 10px;
 	border-radius: 5px;
 	text-align: center;
+	color: #fff;
+	margin-top: 10px;
+	text-shadow: none;
+	border: 1px solid #333;
 }
 
 .fb-login a {
@@ -248,13 +254,15 @@ time, mark, audio, video {
 }
 
 .ing-login {
-	width: 90.5%;
-	height: 35px;
-	line-height: 35px;
+	height: 40px;
+	line-height: 30px;
 	background: #ad7148;
-	margin: 10px auto;
 	border-radius: 5px;
 	text-align: center;
+	color: #fff;
+	text-shadow: none;
+	margin-top: -5px;
+	border: 1px solid #333;
 }
 
 .ing-login a {
@@ -358,4 +366,27 @@ time, mark, audio, video {
 	border: 1px solid #ccc;
 	color: #fff;
 	background: #007c10;
+}
+
+.fbUserInfo {
+	display: none;
+}
+
+.takePhoto {
+	width: 50px;
+	height: 50px;
+}
+
+#tshirtPicture {
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	left: 80px;
+	top: 40px;
+}
+
+.customShirt {
+	width: 225px;
+	margin: 0 auto;
+	position: relative;
 }
