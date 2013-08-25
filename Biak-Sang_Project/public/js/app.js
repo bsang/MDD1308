@@ -9,7 +9,7 @@ var configData = {
 	// PageURLs
 	pageUrls: {
 		homePage			: 	"views/home.html", 			// home page url
-		loginPage 			: 	"views/login.html", 		// login page url
+		loginPage			: 	"views/login.html", 		// login page url
 		registrationPage 	: 	"views/registration.html",	// registration page url
 		productsPage 		: 	"views/products.html",		// products page url
 		designIdeaPage 		: 	"views/design_idea.html", 	// design idea page url
@@ -19,7 +19,7 @@ var configData = {
 	// Page Location or Path
 	partials: {
 		homePath			: 	"/", 						// home page path
-		loginPath 			: 	"/login", 					// login page path
+		loginPath			: 	"/login", 					// login page path
 		registrationPath	: 	"/registration", 			// registration page path
 		productsPath 		: 	"/products", 				// products page path
 		designIdeaPath 		: 	"/design_idea", 			// design ide page path
