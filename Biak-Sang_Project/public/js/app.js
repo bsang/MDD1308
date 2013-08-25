@@ -1,172 +1,251 @@
+/*
+	App: CustomPrints4me
+	Developer: Biak Sang
+	Class: MDD_1308
+*/
+
+// Store Configuration Data
+var configData = {
+	// PageURLs
+	pageUrls: {
+		homePage			: 	"views/home.html", 			// home page url
+		loginPage 			: 	"views/login.html", 		// login page url
+		registrationPage 	: 	"views/registration.html",	// registration page url
+		productsPage 		: 	"views/products.html",		// products page url
+		designIdeaPage 		: 	"views/design_idea.html", 	// design idea page url
+		createShirtPage 	: 	"views/create_shirt.html" 	// create shirt page url
+	},
+
+	// Page Location or Path
+	partials: {
+		homePath			: 	"/", 						// home page path
+		loginPath 			: 	"/login", 					// login page path
+		registrationPath	: 	"/registration", 			// registration page path
+		productsPath 		: 	"/products", 				// products page path
+		designIdeaPath 		: 	"/design_idea", 			// design ide page path
+		createShirtPath 	: 	"/create_shirt" 			// create shirt page path
+	},
+
+	// Controllers
+	controllers: {
+		homeCtl 			: 	"Home", 					// home controller
+		loginCtl 			: 	"Login", 					// login controller
+		registerCtl 		: 	"Registration",	 			// registration controller
+		productsCtl 		: 	"Products", 				// products controller
+		designIdeaCtl  		: 	"DesignIdea", 				// design idea controller
+		createShirtCtl 		: 	"CreateTshirt" 				// create tshirt controller
+	},
+
+	// Image URLs
+	imgUrls: {
+		blueShirtColor		: 	"img/blue-shirt.png", 		// blue shirt color img url
+		whiteShirtColor		: 	"img/white-shirt.png",		// white shirt color img url
+		redShirtColor		: 	"img/red-shirt.png", 		// red shirt color img url
+		greenShirtColor		: 	"img/green-shirt.png" 		// green shirt color img url
+	},
+
+	auth: {
+		firebaseURL			: 	"https://customprints4me.firebaseio.com" // firebase database URL
+	}
+};
+
 angular.module('customTshirt', ['firebase'])
 
-// Router
 .config(['$routeProvider', function(route){
-	
+	// router
 	route
-	.when('/', {
-		templateUrl	: 'views/home.html',
-		controller	: 'Home',
+
+	.when(configData.partials.homePath, {
+		templateUrl	: configData.pageUrls.homePage,
+		// set the controller Home
+		controller	: configData.controllers.homeCtl,
+		// User doesn't require to Login to view this page
 		authRequired: false
 	})
 
-	.when('/login', {
-		templateUrl: 'views/login.html',
-		controller:'Login',
+	.when(configData.partials.loginPath, {
+		templateUrl	: configData.pageUrls.loginPage,
+		// set the controller Login
+		controllers : configData.controllers.loginCtl,
+		// User doesn't require to Login to view this page
 		authRequired: false
 	})
 
-	.when('/registration', {
-		templateUrl	: 'views/registration.html',
-		controller	: "Registration",
+	.when(configData.partials.registrationPath, {
+		templateUrl	: configData.pageUrls.registrationPage,
+		// set the controller Registration
+		controller	: configData.controllers.registerCtl,
+		// User doesn't require to Login to view this page
 		authRequired: false 
 	})
 
-	.when('/products', {
-		templateUrl	: 'views/products.html',
-		controller	: 'Products',
+	.when(configData.partials.productsPath, {
+		templateUrl	: configData.pageUrls.productsPage,
+		// set the controller Products
+		controller	: configData.controllers.productsCtl,
+		// User doesn't require to Login to view this page
 		authRequired: false
 	})
 
-	.when('/design_idea', {
-		templateUrl	: 'views/design_idea.html',
-		controller	: 'DesignIdea',
+	.when(configData.partials.designIdeaPath, {
+		templateUrl	: configData.pageUrls.designIdeaPage,
+		// set the controller DesignIdea
+		controller	: configData.controllers.designIdeaCtl,
+		// User doesn't require to Login to view this page
 		authRequired: false
 	})
 
-	.when('/create_shirt', {
-		templateUrl	: 'views/create_shirt.html',
-		controller	: 'CreateTshirt',
-		authRequired: false
+	.when(configData.partials.createShirtPath, {
+		templateUrl	: configData.pageUrls.createShirtPage,
+		// set the controller CreateTshirt
+		controller	: configData.controllers.createShirtCtl,
+		// User required them to Login to create Custom TShirt
+		authRequired: true
 	});
 }])
 
 .run(['angularFireAuth', function(angularFireAuth) {
 
-	angularFireAuth.initialize('https://customprints4me.firebaseio.com', {
+	angularFireAuth.initialize(configData.auth.firebaseURL, {
 		'name': 'user', 'path':'/'
 	})
 }])
 
+// make a controller for Login and run a myCtrl function
 .controller('Login', ['$scope', 'angularFireAuth', '$location', '$rootScope', function myCtrl($scope, angularFireAuth, $location, $rootScope){
-	
 	// Login with facebook
 	$scope.fbLogin = function() {
+		// when the user login successfully then run the following function
 		angularFireAuth.login('facebook').then(function() {
 			// If the user login successfully it will take them to create shirt page
-			$location.path('/login');
-			console.log($rootScope.user);
-
+			$location.path('/create_shirt');
+			// make a variable for fbUserInfo
 			var fbUser = document.querySelector('.fbUserInfo');
+			// make fbUserInfo display
 			fbUser.style.display = "block";
+			// use the facebook api to display facebook profile picture when the user login
 			fbUser.children[0].src = "https://graph.facebook.com/"+$rootScope.user.id+"/picture?type=small";
+			// display facebook displayName on page
 			fbUser.children[1].innerHTML = $rootScope.user.displayName;
 		});
 	}
 
-	// Login
+	// Login with Email and password
 	$scope.login = function() {
+		// if the user pass the right email address and password then login successfully
 		angularFireAuth.login('password', $scope.user).then(function() {
 			// If the user login successfully it will take them to create shirt page
-			$location.path('/create_shirt');
+			$location.path(configData.partials.createShirtPath);
 		});
 	}
+
+	// Check if the user is login
+	$scope.$on("angularFireAuth:fbLogin", function(evt, user) {
+		console.log("User Login", user);
+	})
 }])
 
 .controller('Registration', ['$scope', 'angularFireAuth', '$location', function myCtrl($scope, angularFireAuth, $location){
-
+	// set $scope.location to $location
 	$scope.location = $location;
 	// if the user click on register take the following action
 	$scope.register = function() {
 		angularFireAuth.createUser($scope.user.email, $scope.user.password, function(user) {
 			if(user) {
-				$location.path('/create_shirt');
+				$location.path(configData.partials.createShirtPath);
 			}
 		});
 
 		$scope.user = {};
 	}
 
-}]);
+}])
 
 // Home
-function Home ($scope, $routeParams) {
+.controller('Home', ['$scope', 'angularFireAuth', '$location', function myCtrl($scope, angularFireAuth, $location){
 	
-}
-
-// Products
-function Products ($scope, $routeParams) {
-
-}
+	$scope.location = $location;
+	$scope.createNewShirt = function() {
+		if(!angularFireAuth){
+			$location.path(configData.partials.createShirtPath);
+		} else {
+			$location.path(configData.partials.loginPath);
+		}
+	}
+}])
 
 // Create Shirt function
-function CreateTshirt ($scope, $routeParams) {
+.controller('CreateTshirt', ['$scope', function myCtrl($scope){
 
-	var blue 	= document.querySelector('.blueShirt');
-	var white 	= document.querySelector('.whiteShirt');
-	var red 	= document.querySelector('.redShirt');
-	var green 	= document.querySelector('.greenShirt');
-	var facebookPhoto = document.getElementById('fbPhoto');
+	// Variables for Tshirts color choice
+	var blueShirt 	= document.querySelector('.blueShirt');
+	var whiteShirt 	= document.querySelector('.whiteShirt');
+	var redShirt 	= document.querySelector('.redShirt');
+	var greenShirt 	= document.querySelector('.greenShirt');
+
+	// facebook photo container
+	var facebookPhoto 		= document.getElementById('fbPhoto');
+	// Main Tshirt
+	var customTShirtColor 	= document.querySelector('.customShirt');
 
 	// CHANGING TSHIRT COLOR
 	// Change the t-shirt color to blue
-	blue.onclick = function(e) {
-		document.querySelector('.tShirtCanvasColor').src = 'img/blue-shirt.png';
+	blueShirt.onclick = function(e) {
+		// Change the image source to blue shirt picture
+		customTShirtColor.style.background = "url("+configData.imgUrls.blueShirtColor+")";
 		e.preventDefault();
 	}
 	// Change the t-shirt color to white
-	white.onclick = function(e) {
-		document.querySelector('.tShirtCanvasColor').src = 'img/white-shirt.png';
+	whiteShirt.onclick = function(e) {
+		// Change the image source to white shirt picture
+		customTShirtColor.style.background = "url("+configData.imgUrls.whiteShirtColor+")";
 		e.preventDefault();
 	}
 	// Change the t-shirt color to red
-	red.onclick = function(e) {
-		document.querySelector('.tShirtCanvasColor').src = 'img/red-shirt.png';
+	redShirt.onclick = function(e) {
+		// Change the image source to red shirt picture
+		customTShirtColor.style.background = "url("+configData.imgUrls.redShirtColor+")";
 		e.preventDefault();
 	}
 	// Change the t-shirt color to green
-	green.onclick = function(e) {
-		document.querySelector('.tShirtCanvasColor').src = 'img/green-shirt.png';
+	greenShirt.onclick = function(e) {
+		// Change the image source to green shirt picture
+		customTShirtColor.style.background = "url("+configData.imgUrls.greenShirtColor+")";
 		e.preventDefault();
 	}
 
-	// function getBase64FromImageUrl(URL) {
-	//     var img = new Image();
-	//     img.src = URL;
-	//     img.onload = function () {
-
-
-	//     var canvas = document.createElement("canvas");
-	//     canvas.width =this.width;
-	//     canvas.height =this.height;
-
-	//     var ctx = canvas.getContext("2d");
-	//     ctx.drawImage(this, 0, 0);
-
-
-	//     var dataURL = canvas.toDataURL("image/png");
-
-	//     alert(  dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
-
-	//     }
-	// }
+	// set $scope.shirt to empty object
 	$scope.shirt = {};
+
+	// make update image function so that when the new image is select it will replace it
 	$scope.update_image = function(picture)
 	{
+		// make a reader variable for FileReader
 		var reader = new FileReader();
-
+		// When the reader is load run the following funcation
 		reader.onload = function(readerEvt)
 		{
 			var binaryString = readerEvt.target.result;
 			$scope.shirt.image = btoa(binaryString);
+			var canvas = document.getElementById('pictureCanvas');
+			// make context variable and pass the context into canvas ans pass an arguement of "2d"
+			var context = canvas.getContext("2d");
+			// make a new varible for new Image
+		    var tshirtObj = new Image();
+
+		    data =  "data:image/png;base64," + btoa(binaryString);
+		    // when the new image is load run the following function
+		    tshirtObj.onload = function() {
+		    	// add a new image with a position of 0 0
+		    	context.drawImage(tshirtObj, 10, 10);
+		    	console.log(context);
+		    }
+
+		    tshirtObj.src = data;
 		}
 
 		reader.readAsBinaryString(picture.files[0]);
 	}
 
 	
-}
-
-function DesignIdea ($scope, $routeParams) {
-	
-}
+}])
