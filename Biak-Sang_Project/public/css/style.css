@@ -25,6 +25,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+body {
+	background: #eaeaeb;
+}
+
 .logo {
 	float: left;
 	margin-left: 5px;
@@ -36,11 +40,13 @@ time, mark, audio, video {
 
 .navbar {
 	width: 100%;
-	background: #f4f4f4;
+	top: 0;
+	background: #342519;
 	border-bottom: 2px solid #ccc;
 	overflow: hidden;
 	margin-bottom: 0;
 	position: fixed;
+	z-index: 100000;
 }
 
 .globalNav {
@@ -50,15 +56,17 @@ time, mark, audio, video {
 .globalNav .nav li {
 	width: 100%;
 	height: 4em;
+	color: #f0f0f0;
 	line-height: 4em;
-	background: $f0f0f0;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #333;
+	background: #2b2215;
 }
 
 .globalNav .nav li a {
 	display: block;
 	font-family: helvetica, arial, sans-serif;
 	font-size: 1em;
+	color: #f0f0f0;
 	text-indent: 10px;
 }
 
@@ -74,7 +82,9 @@ time, mark, audio, video {
 }
 
 .intro {
-	background: #04678c;
+	height: 240px;
+	background: url(../img/brick.png);
+	background-position:center;
 }
 
 .input-append  {
@@ -109,6 +119,15 @@ time, mark, audio, video {
 	/*display: none;*/
 }
 
+.navbar-inverse .btn-navbar {
+	background: #0993d2;
+}
+
+.navbar-inverse .btn-navbar:hover {
+	background: #ed4d4a;
+}
+
+
 .search-bar input {
 	border: 1px solid #ccc;
 }
@@ -123,7 +142,8 @@ time, mark, audio, video {
 
 .btnBackground .createNow {
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 22px;
+	font-size: 21px;
+	border-radius: 0px;
 	text-transform: uppercase;
 }
 
@@ -140,30 +160,42 @@ time, mark, audio, video {
 }
 
 .contentTitle{
+	width: 100%;
+	/*margin-right: auto;
+	margin-left: auto;*/
 	font-size: 1.5em;
 	font-family: Helvetica, Arial, sans-serif;
 	text-align: center;
-	padding-top: 1em;
-	padding-bottom: .3em;
-	margin-bottom: .5em;
+	padding-top: .5em;
+	background: #f4f3f3;
+	padding-bottom: .5em;
+	margin-bottom: 20px;
 	border-bottom: 1px solid #ccc;
 }
 
 .customButton {
 	background: #00aeef;
-	width: 100%;
+	width: 91.5%;
+	margin-right: auto;
+	margin-left: auto;
 	padding-top: .8em;
 	padding-bottom: .8em;
-	margin-top: .5em;
+	margin-top: -.6em;
 	text-align: center;
+	margin-bottom: 10px;
+	border: 1px solid #4ba1d1;
 }
 
 .media {
-	background: #f0f0f0;
-	margin-bottom: 13px; 
+	width: 90%;
+	background: #d1d5d9;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px; 
 	margin-top: -11px;
 	padding-top: 8px;
 	padding-bottom: 8px;
+	border-left: 5px solid #dc521d;
 }
 
 .mediaThumbnail {
@@ -206,6 +238,10 @@ time, mark, audio, video {
 	margin-top: 10px;
 	text-indent: 10px;
 	color: #f4f4f4;
+}
+
+.loginForm {
+	margin-top: 30px;
 }
 
 .login {
@@ -272,7 +308,7 @@ time, mark, audio, video {
 }
 
 .registerUser {
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 .canvas {
@@ -281,35 +317,40 @@ time, mark, audio, video {
 
 .colorChoice {
 	width: 10%;
-	height: 100%;
+/*	height: 80%;*/
 	float: left;
 }
 
 .tShirtCanvas {
 	width: 90%;
-	height: 100%;
-	padding: 13px 0;
+	padding-top: 20px;
 	text-align: center;
 }
 
-.CustomButtons {
+.getPhotoContainer {
 	width: 100%;
 	position: fixed;
-  	background: #333;
+  	background: #222;
   	bottom: 0;
   	height: 50px;
+  	padding-top: 5px;
+  	padding-bottom: 3px;
+  	border-top: 1px solid #ccc;
   	clear:both;
 }
 
-.CustomButtons ul li {
-	width: 3.1em;
-	height: 50px;
-	border-right: 1px solid #333;
-	background: #222;
-	padding-left: 7px;
-	padding-right: 7px;
-	padding-top: 2px;
-	padding-bottom: 2px;
+.getPic {
+	width: 48px;
+	height: 48px;
+	margin: 0 auto;
+	background: url(../img/camera.png) no-repeat;
+}
+
+.getPhoto {
+	opacity: 0;
+	height: 25px;
+	padding-top: 15px;
+	margin-left: -20px;
 }
 
 .center {
@@ -318,7 +359,7 @@ time, mark, audio, video {
 }
 
 .colorChoice {
-	margin-top: 50px;
+	margin-top: 70px;
 }
 
 .colorChoice ul li {
@@ -372,11 +413,6 @@ time, mark, audio, video {
 	display: none;
 }
 
-.takePhoto {
-	width: 50px;
-	height: 50px;
-}
-
 #tshirtPicture {
 	width: 70px;
 	height: 70px;
@@ -388,7 +424,7 @@ time, mark, audio, video {
 .customShirt {
 	width: 225px;
 	height: 225px;
-	margin: 0 auto;
+	margin: 20px auto 0;
 	position: relative;
 	background: url(../img/blue-shirt.png);
 }

@@ -1,25 +1,21 @@
 <div class="span12 canvas">
-	<div class="colorChoice">
+	<div class="colorChoice" ng-controller="CreateTshirt">
 		<ul>
-			<li><a class="blueShirt" href="#">B</a></li>
-			<li><a class="whiteShirt" href="#">W</a></li>
-			<li><a class="redShirt" href="#">R</a></li>
-			<li><a class="greenShirt" href="#">G</a></li>
+			<li><a class="blueShirt" ng-click="blueShirt()">B</a></li>
+			<li><a class="whiteShirt" ng-click="whiteShirt()">W</a></li>
+			<li><a class="redShirt" ng-click="redShirt()">R</a></li>
+			<li><a class="greenShirt" ng-click="greenShirt()">G</a></li>
 		</ul>
 	</div>
 	<div class="tShirtCanvas pull-right">
 		<div class="customShirt">
-			<canvas width="85" height="85" id="pictureCanvas"></canvas>
+			<canvas width="80" height="130" id="pictureCanvas"></canvas>
 		</div>
 	</div>
-	<div class="CustomButtons">
-		<ul>
-			<input type="file" ng-model="shirt.picture" onchange="angular.element(this).scope().update_image(this)">
-			<!-- <li class="pull-left"><a href="#" id="fbPhoto"><img class="center" src="img/facebook.png" width="34" height="34"></a></li>
-			<li class="pull-left"><a href="#"><img class="center" src="img/instagram.png " width="34" height="34"></a></li>
-			<li class="pull-left"><a href="#" ng-model='myPicture'><img src="img/camera.png"></a></li>
-			<li class="pull-left"><a href="#"><img class="center" src="img/addCart.png" width="34" height="34"></a></li>
-			<li class="pull-left"><a href="#"><img class="center" src="img/share.png" width="34" height="34"></a></li> -->
+
+	<div class="getPhotoContainer">
+		<ul class="getPic">
+			<input class="getPhoto" type="file" ng-model="shirt.picture" onchange="angular.element(this).scope().update_image(this)">
 		</ul>
 	</div>
 </div>

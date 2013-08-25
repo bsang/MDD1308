@@ -41,7 +41,12 @@ var configData = {
 		blueShirtColor		: 	"img/blue-shirt.png", 		// blue shirt color img url
 		whiteShirtColor		: 	"img/white-shirt.png",		// white shirt color img url
 		redShirtColor		: 	"img/red-shirt.png", 		// red shirt color img url
-		greenShirtColor		: 	"img/green-shirt.png" 		// green shirt color img url
+		greenShirtColor		: 	"img/green-shirt.png", 		// green shirt color img url
+		femaleBlueShirt		: 	"img/blue-shirt-female.png",// female blue shirt img url
+		femaleGreenShirt	: 	"img/green-shirt-female.png",//female green shirt color img url
+		femalePinkShirt		: 	"img/pink-shirt-female.png",// female pink shirt color img url
+		femaleWhiteShirt	: 	"img/white-shirt-female.png"// female white shirt color img url
+
 	},
 
 	auth: {
@@ -177,41 +182,29 @@ angular.module('customTshirt', ['firebase'])
 // Create Shirt function
 .controller('CreateTshirt', ['$scope', function myCtrl($scope){
 
-	// Variables for Tshirts color choice
-	var blueShirt 	= document.querySelector('.blueShirt');
-	var whiteShirt 	= document.querySelector('.whiteShirt');
-	var redShirt 	= document.querySelector('.redShirt');
-	var greenShirt 	= document.querySelector('.greenShirt');
-
-	// facebook photo container
-	var facebookPhoto 		= document.getElementById('fbPhoto');
 	// Main Tshirt
 	var customTShirtColor 	= document.querySelector('.customShirt');
 
 	// CHANGING TSHIRT COLOR
 	// Change the t-shirt color to blue
-	blueShirt.onclick = function(e) {
-		// Change the image source to blue shirt picture
+	$scope.blueShirt = function() {
+		// Change the t-shirt color to blue
 		customTShirtColor.style.background = "url("+configData.imgUrls.blueShirtColor+")";
-		e.preventDefault();
 	}
 	// Change the t-shirt color to white
-	whiteShirt.onclick = function(e) {
+	$scope.whiteShirt= function() {
 		// Change the image source to white shirt picture
 		customTShirtColor.style.background = "url("+configData.imgUrls.whiteShirtColor+")";
-		e.preventDefault();
 	}
 	// Change the t-shirt color to red
-	redShirt.onclick = function(e) {
+	$scope.redShirt = function() {
 		// Change the image source to red shirt picture
 		customTShirtColor.style.background = "url("+configData.imgUrls.redShirtColor+")";
-		e.preventDefault();
 	}
 	// Change the t-shirt color to green
-	greenShirt.onclick = function(e) {
+	$scope.greenShirt = function() {
 		// Change the image source to green shirt picture
 		customTShirtColor.style.background = "url("+configData.imgUrls.greenShirtColor+")";
-		e.preventDefault();
 	}
 
 	// set $scope.shirt to empty object
@@ -228,6 +221,8 @@ angular.module('customTshirt', ['firebase'])
 			var binaryString = readerEvt.target.result;
 			$scope.shirt.image = btoa(binaryString);
 			var canvas = document.getElementById('pictureCanvas');
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
 			// make context variable and pass the context into canvas ans pass an arguement of "2d"
 			var context = canvas.getContext("2d");
 			// make a new varible for new Image
@@ -237,7 +232,7 @@ angular.module('customTshirt', ['firebase'])
 		    // when the new image is load run the following function
 		    tshirtObj.onload = function() {
 		    	// add a new image with a position of 0 0
-		    	context.drawImage(tshirtObj, 10, 10);
+		    	context.drawImage(tshirtObj, 74, 40, 80, 80);
 		    	console.log(context);
 		    }
 
@@ -246,6 +241,5 @@ angular.module('customTshirt', ['firebase'])
 
 		reader.readAsBinaryString(picture.files[0]);
 	}
-
 	
 }])
