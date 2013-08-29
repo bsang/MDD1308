@@ -1,16 +1,17 @@
 <div class="span12 loginForm">
 				<form class="form-horizontal" ng-controller="Login">
 					<div class="control-group login">
-					    <input type="text" id="inputEmail" placeholder="Email" ng-model="user.email">
+					    <input type="text" id="inputEmail" placeholder="Email" ng-model="user.email" required>
 					</div>
 
 				  	<div class="control-group login">
-					    <input type="password" id="inputPassword" placeholder="Password" ng-model="user.password">
+					    <input type="password" id="inputPassword" placeholder="Password" ng-model="user.password" required>
 				  	</div>
 
 				  	<div class="control-group login">
 					    <button type="submit" class="btn loginbtn" ng-click="login()">Sign in</button>
 					</div>
+					s
 					<div class="help">
 						<a href="#/registration" class="pull-left">Create an account</a>
 						<a href="#" class="pull-right">Forgot Password?</a>
@@ -24,9 +25,5 @@
 					<div class="control-group login">
 					    <button type="submit" class="btn loginbtn fb-login" ng-click="fbLogin()">Login with facebook</button>
 					</div>
-
-					<!-- <div class="control-group login">
-					    <button type="submit" class="btn loginbtn ing-login" ng-click="fbLogin()">Login with Instagram</button>
-					</div> -->
 				</form>
 			</div>

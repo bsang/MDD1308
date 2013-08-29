@@ -1,50 +1,23 @@
-			<div class="span12 intro">
-
-			</div>
+			<div class="span12 intro"></div>
 
 			<div class="span12 btnBackground">
-				<button class="btn btn-large btn-primary createNow" type="button" ng-click="createNewShirt()">Start Creating Shirt</button>
+				<a href="#/create_shirt" class="btn btn-large btn-primary createNow" type="button">Start Creating Shirt</a>
 			</div>
 
-			<div class="span12">
+			<div class="span12" ng-controller="Designs">
 				<div class="row-fluid">
 					<h1 class="contentTitle">New Custom T-Shirt</h1>
-					<div class="media">
-						<a class="mediaThumbnail" href="#">
-							<img src="img/thumbnail01.png">
-						</a>
-						<div class="mediaTitle">
-							<h3>Leziwin Tshirt Design</h3>
-							<p>Design by: Biak Sang</p>
-						</div>
 
-						<i class="icon-chevron-right rightIcon"></i>
-					</div>
-
-					<div class="media">
-						<a class="mediaThumbnail" href="#">
-							<img src="img/thumbnail02.png">
-						</a>
-						<div class="mediaTitle">
-							<h3>Summer Design</h3>
-							<p>Design by: Biak Sang</p>
+						<div class="media" ng-repeat="shirt in shirts | limitTo:3">
+							<img class="mediaThumbnail" src={{shirt.imgUrl}}>
+							<div class="mediaTitle">
+								<h3>{{shirt.designTitle}}</h3>
+								<p>Design by: {{shirt.designer}}</p>
+							</div>
 						</div>
-						<i class="icon-chevron-right rightIcon"></i>
-					</div>
-
-					<div class="media">
-						<a class="mediaThumbnail" href="#">
-							<img src="img/thumbnail03.png">
-						</a>
-						<div class="mediaTitle">
-							<h3>Leziwin Tshirt Design</h3>
-							<p>Design by: Biak Sang</p>
-						</div>
-						<i class="icon-chevron-right rightIcon"></i>
-					</div>
 
 					<div class="customButton">
-						<a href="#/products">More Custom Tshirt Design</a>
+						<a href="#/designs">More Custom Tshirt Design</a>
 					</div>
 
 				</div>

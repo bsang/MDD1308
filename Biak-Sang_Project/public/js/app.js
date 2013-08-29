@@ -11,19 +11,19 @@ var configData = {
 		homePage			: 	"views/home.html", 			// home page url
 		loginPage			: 	"views/login.html", 		// login page url
 		registrationPage 	: 	"views/registration.html",	// registration page url
-		productsPage 		: 	"views/products.html",		// products page url
-		designIdeaPage 		: 	"views/design_idea.html", 	// design idea page url
-		createShirtPage 	: 	"views/create_shirt.html" 	// create shirt page url
+		designsPage 		: 	"views/designs.html",		// designs page url
+		createShirtPage 	: 	"views/create_shirt.html", 	// create shirt page url
+		contactPage			: 	"views/contact.html"
 	},
 
 	// Page Location or Path
 	partials: {
 		homePath			: 	"/", 						// home page path
-		loginPath			: 	"/login", 					// login page path
+		loginPath			: 	"/login/:type", 			// login page path
 		registrationPath	: 	"/registration", 			// registration page path
-		productsPath 		: 	"/products", 				// products page path
-		designIdeaPath 		: 	"/design_idea", 			// design ide page path
-		createShirtPath 	: 	"/create_shirt" 			// create shirt page path
+		designsPath 		: 	"/designs", 				// design page path
+		createShirtPath 	: 	"/create_shirt", 			// create shirt page path
+		contactPath 		: 	"/contact"
 	},
 
 	// Controllers
@@ -31,9 +31,9 @@ var configData = {
 		homeCtl 			: 	"Home", 					// home controller
 		loginCtl 			: 	"Login", 					// login controller
 		registerCtl 		: 	"Registration",	 			// registration controller
-		productsCtl 		: 	"Products", 				// products controller
-		designIdeaCtl  		: 	"DesignIdea", 				// design idea controller
-		createShirtCtl 		: 	"CreateTshirt" 				// create tshirt controller
+		designsCtl	 		: 	"Designs", 					// design controller
+		createShirtCtl 		: 	"CreateTshirt", 			// create tshirt controller
+		contactCtl 			: 	"Contact"
 	},
 
 	// Image URLs
@@ -84,18 +84,10 @@ angular.module('customTshirt', ['firebase'])
 		authRequired: false 
 	})
 
-	.when(configData.partials.productsPath, {
-		templateUrl	: configData.pageUrls.productsPage,
+	.when(configData.partials.designsPath, {
+		templateUrl	: configData.pageUrls.designsPage,
 		// set the controller Products
-		controller	: configData.controllers.productsCtl,
-		// User doesn't require to Login to view this page
-		authRequired: false
-	})
-
-	.when(configData.partials.designIdeaPath, {
-		templateUrl	: configData.pageUrls.designIdeaPage,
-		// set the controller DesignIdea
-		controller	: configData.controllers.designIdeaCtl,
+		controller	: configData.controllers.designsCtl,
 		// User doesn't require to Login to view this page
 		authRequired: false
 	})
@@ -106,32 +98,46 @@ angular.module('customTshirt', ['firebase'])
 		controller	: configData.controllers.createShirtCtl,
 		// User required them to Login to create Custom TShirt
 		authRequired: true
+	})
+
+	.when(configData.partials.contactPath, {
+		templateUrl	: configData.pageUrls.contactPage,
+		// set the controller for Contact
+		controller	: configData.controllers.contactCtl,
+		// User doesn't require to Login to view this page
+		authRequired: false
 	});
 }])
 
 .run(['angularFireAuth', function(angularFireAuth) {
 
 	angularFireAuth.initialize(configData.auth.firebaseURL, {
-		'name': 'user', 'path':'/'
+		'name': 'user', 'path':"/login/shirt"
 	})
 }])
 
 // make a controller for Login and run a myCtrl function
-.controller('Login', ['$scope', 'angularFireAuth', '$location', '$rootScope', function myCtrl($scope, angularFireAuth, $location, $rootScope){
+.controller('Login', ['$scope', 'angularFireAuth', '$location', '$rootScope','$routeParams', function($scope, angularFireAuth, $location, $rootScope,$routeParams){
 	// Login with facebook
+	$scope.$on("angularFireAuth:login", function(evt, user) {
+  	// User logged in.
+  		$location.path('/create_shirt');
+	});
+	
 	$scope.fbLogin = function() {
 		// when the user login successfully then run the following function
-		angularFireAuth.login('facebook').then(function() {
+		angularFireAuth.login('facebook').then(function(fbData) {
 			// If the user login successfully it will take them to create shirt page
-			$location.path('/create_shirt');
-			// make a variable for fbUserInfo
-			var fbUser = document.querySelector('.fbUserInfo');
-			// make fbUserInfo display
-			fbUser.style.display = "block";
-			// use the facebook api to display facebook profile picture when the user login
-			fbUser.children[0].src = "https://graph.facebook.com/"+$rootScope.user.id+"/picture?type=small";
-			// display facebook displayName on page
-			fbUser.children[1].innerHTML = $rootScope.user.displayName;
+			if($routeParams.type == "shirt")
+			{
+				$location.path('/create_shirt');
+			}
+			else if($routeParams.type == "design")
+			{
+				$location.path('/designs');
+				console.log(type);
+			}
+			
 		});
 	}
 
@@ -167,16 +173,8 @@ angular.module('customTshirt', ['firebase'])
 }])
 
 // Home
-.controller('Home', ['$scope', 'angularFireAuth', '$location', function myCtrl($scope, angularFireAuth, $location){
+.controller('Home', ['$scope', 'angularFireCollection', 'angularFireAuth', '$location', function myCtrl($scope, angularFireCollection, angularFireAuth, $location){
 	
-	$scope.location = $location;
-	$scope.createNewShirt = function() {
-		if(!angularFireAuth){
-			$location.path(configData.partials.createShirtPath);
-		} else {
-			$location.path(configData.partials.loginPath);
-		}
-	}
 }])
 
 // Create Shirt function
@@ -242,4 +240,31 @@ angular.module('customTshirt', ['firebase'])
 		reader.readAsBinaryString(picture.files[0]);
 	}
 	
+}])
+
+.controller('Designs', ['$scope', 'angularFireCollection', 'angularFireAuth', function myCtrl($scope, angularFireCollection, angularFireAuth){
+	// Create New Design variable
+	var createNew = document.querySelector('.createNew');
+	// Create Shirt Form variable
+	var createNewShirtForm = document.querySelector('.createNewShirtForm');
+	// Firebase Database URL
+	var url = "https://customprints4me.firebaseio.com/productsList";
+	$scope.shirts = angularFireCollection(url, $scope, 'shirts', []);
+	// If the user Click on Add Design button run the following function
+	$scope.addDesign = function() {
+		createNewShirtForm.style.display = 'block';
+		createNew.style.display = 'none';
+		// Click Add New Design button
+		$scope.addNewDesign = function() {
+			// Add ImageURL, design title, and author to database
+			$scope.shirts.add({imgUrl: $scope.shirt.imgUrl, designTitle: $scope.shirt.designTitle, designer: $scope.shirt.designer});
+			createNewShirtForm.style.display = 'none';
+			createNew.style.display = 'block';
+			// Set imgurl, design title, and designer input field empty
+			$scope.shirt.imgUrl = '';
+			$scope.shirt.designTitle = '';
+			$scope.shirt.designer = '';
+		}
+	}
+
 }])

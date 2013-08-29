@@ -19,12 +19,8 @@
 <body ng-controller="AppCtrl">
 	<header>
 		<nav class="navbar navbar-inverse">
-			<!-- Search button -->
-			<a class="btn btn-navbar" id="searchBtn" data-toggle="collapse" data-target=".nav-collapse">
-	            <span class="icon-search icon-white"></span>
-			</a>
 			<!-- user login -->
-			<a class="btn btn-navbar" href="#/login">
+			<a class="btn btn-navbar" href="#/login/shirt">
 	            <span class="icon-user icon-white"></span>
 			</a>
 			<!-- Menu icon -->
@@ -32,23 +28,18 @@
 	            <span class="icon-align-justify icon-white"></span>
 			</a>
 			<!-- Logo -->
-			<a class="brand" href="index.html"><img class="logo" src="img/logo.png"></a>
+			<a class="brand" href="#/"><img class="logo" src="img/logo.png"></a>
 		</nav>
 		<!-- End Nav -->
 	</header>
-	<!-- <div class="input-append search-bar">
-	  <input class="input-block-level searchInput" id="appendedInputButton" type="text">
-	  <button class="btn" type="button">Go!</button>
-	</div> -->
 
 	<!-- ng-show='menuToggle' -->
 	<div class="container-fluid" >
 		<div class="globalNav">
 			<ul class="nav">
 				<li><i class="icon-home icon-white pull-left"></i><a id="homeBtn" href="#/">Home</a></li>
-				<li><i class="icon-th-large icon-white pull-left"></i><a id="productBtn" href="#/products">Products</a></li>
-				<li><i class="icon-picture icon-white pull-left"></i><a id="designIdeaBtn" href="#/design_ideas">Design Ideas</a></li>
-				<li><i class="icon-envelope icon-white pull-left"></i><a id="contactBtn" href="#/contacts">Contacts</a></li>
+				<li><i class="icon-th-large icon-white pull-left"></i><a id="designsBtn" href="#/designs">Design</a></li>
+				<li><i class="icon-envelope icon-white pull-left"></i><a id="contactBtn" href="#/contact">Contacts</a></li>
 			</ul>
 		</div>
 
@@ -58,7 +49,6 @@
 		</div>
 	</div>
 	<div id="fb-root"></div>
-	<script type="text/javascript" src="js/controllers/facebook.js"></script>
 	<!-- Firebase Conenctions -->
 	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
 	<script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>

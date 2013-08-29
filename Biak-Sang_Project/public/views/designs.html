@@ -1,0 +1,35 @@
+<div class="span12 products" ng-controller="Designs">
+				<div class="row-fluid">
+					<h1 class="contentTitle">Our Designs</h1>
+					<div class="control-group" >
+					    <a type="submit" class="btn btn-large btn-primary createNew" ng-click="addDesign()" ng-show="user">Add New Design</a>
+					    <a type="submit" class="btn btn-large btn-primary createNew" href="#/login/design" ng-hide="user">Add New Design</a>
+					</div>
+					<form class="createNewShirtForm">
+						<div class="control-group createShirtForm">
+					   		<input type="text" placeholder="Design Title" ng-model="shirt.designTitle" required>
+					  	</div>
+
+					  	<div class="control-group createShirtForm">
+					   		<input type="text" placeholder="Author" ng-model="shirt.designer" required>
+					  	</div>
+
+					  	<div class="control-group createShirtForm">
+					   		<input type="text" placeholder="Paste Image URL" ng-model="shirt.imgUrl" required>
+					  	</div>
+
+					  	<div class="control-group">
+						    <button type="submit" class="btn btn btn-large btn-primary addNewDesign" ng-click="addNewDesign()">Add New Design</button>
+						</div>
+					</form>
+
+					<div class="media" ng-repeat="shirt in shirts">
+						<img class="mediaThumbnail" src={{shirt.imgUrl}}>
+						<div class="mediaTitle">
+							<h3>{{shirt.designTitle}}</h3>
+							<p>Design by: {{shirt.designer}}</p>
+						</div>
+					</div>
+
+				</div>
+			</div>

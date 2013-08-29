@@ -148,8 +148,7 @@ body {
 }
 
 .designContest, .mediaThumbnail{
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-bottom: 2px;
 }
 
 .contents article {
@@ -175,7 +174,7 @@ body {
 
 .customButton {
 	background: #00aeef;
-	width: 91.5%;
+	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
 	padding-top: .8em;
@@ -186,33 +185,40 @@ body {
 	border: 1px solid #4ba1d1;
 }
 
+
+.createNewShirtForm{
+	display: none;
+}
+
 .media {
 	width: 90%;
-	background: #d1d5d9;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 20px; 
+	margin-bottom: 10px; 
 	margin-top: -11px;
 	padding-top: 8px;
 	padding-bottom: 8px;
-	border-left: 5px solid #dc521d;
 }
-
-.mediaThumbnail {
-	float: left;
+.mediaTitle {
+	background: #d1d5d9;
+	border-left: 5px solid #dc521d;
+	text-indent: 10px;
+	padding-top: 2px;
+	padding-bottom: 5px;
 }
 
 
 .mediaTitle h3 {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 1em;
-	margin-top: 15px;
+	margin-top: 5px;
 	font-weight: bold;
 }
 
 .mediaTitle p {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: .9em;
+	line-height: 20px;
 	/*font-style: italic;*/
 }
 
@@ -260,6 +266,38 @@ body {
 	height: 40px;
 	width: 90%;
 	margin-left: 15px;
+}
+
+.createShirtForm{
+	height: 40px;
+	width: 90%;
+	margin-left: 15px;
+}
+
+.createShirtForm input {
+	width: 100%;
+	height: 40px;
+	border: 1px solid #ccc;
+	margin-bottom: -10px;
+}
+
+.createNew {
+	width: 79%;
+	background: #d84a1c;
+	margin-left: 13px;
+	margin-bottom: 15px;
+	margin-top: -5px;
+	border: 1px solid #ddd;
+}
+
+.addNewDesign {
+	height: 45px;
+	width: 92%;
+	background: #d84a1c;
+	margin-left: 13px;
+	margin-bottom: 15px;
+	margin-top: -5px;
+	border: 1px solid #ddd;
 }
 
 .help {
@@ -427,4 +465,30 @@ body {
 	margin: 20px auto 0;
 	position: relative;
 	background: url(../img/blue-shirt.png);
+}
+
+.contact {
+	width: 90%;
+	margin: 0 auto;
+	font-size: 1em;
+	font-family: helvetica, arial, sans-serif;
+}
+
+.contact div {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted #ccc;
+	padding-bottom: 10px;
+}
+
+.contact label {
+	font-weight: bold;
+	width: 80px;
+	overflow: hidden;
+	margin-right: 10px;
+	text-align: right;
+}
+
+.contact .city {
+	text-indent: 90px;
 }
